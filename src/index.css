@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * 폐차장 입찰/운영 시스템 디자인 시스템
+ * Design Tokens from UX Specification
+ */
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --brand-primary: 212 66% 17%;
+    --brand-primary-600: 212 67% 22%;
+    --brand-primary-500: 212 62% 28%;
+    --brand-primary-100: 212 49% 93%;
+
+    /* Accent Colors */
+    --accent-success: 145 66% 46%;
+    --accent-warning: 32 100% 50%;
+    --accent-danger: 0 73% 57%;
+    --accent-info: 214 84% 56%;
+    --accent-highlight: 88 73% 58%;
+
+    /* Neutral Palette */
+    --neutral-900: 220 11% 8%;
+    --neutral-850: 220 11% 13%;
+    --neutral-800: 215 14% 20%;
+    --neutral-700: 216 15% 27%;
+    --neutral-600: 218 11% 46%;
+    --neutral-500: 218 11% 65%;
+    --neutral-300: 218 11% 82%;
+    --neutral-200: 218 14% 91%;
+    --neutral-100: 210 18% 96%;
+    --neutral-0: 0 0% 100%;
+
+    /* Semantic Tokens */
+    --background: var(--neutral-0);
+    --foreground: var(--neutral-900);
+
+    --card: var(--neutral-0);
+    --card-foreground: var(--neutral-900);
+
+    --popover: var(--neutral-0);
+    --popover-foreground: var(--neutral-900);
+
+    --primary: var(--brand-primary);
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: var(--neutral-100);
+    --secondary-foreground: var(--neutral-900);
+
+    --muted: var(--neutral-100);
+    --muted-foreground: var(--neutral-600);
+
+    --accent: var(--brand-primary-100);
+    --accent-foreground: var(--brand-primary);
+
+    --destructive: var(--accent-danger);
+    --destructive-foreground: 0 0% 100%;
+
+    --success: var(--accent-success);
+    --success-foreground: 0 0% 100%;
+
+    --warning: var(--accent-warning);
+    --warning-foreground: 0 0% 100%;
+
+    --info: var(--accent-info);
+    --info-foreground: 0 0% 100%;
+
+    --highlight: var(--accent-highlight);
+    --highlight-foreground: var(--neutral-900);
+
+    --border: var(--neutral-200);
+    --input: var(--neutral-200);
+    --ring: var(--accent-info);
+
+    /* Radius */
+    --radius: 0.5rem;
+    --radius-button: 0.5rem;
+    --radius-card: 0.75rem;
+    --radius-modal: 1rem;
+
+    /* Shadows */
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-modal: 0 16px 40px rgba(0, 0, 0, 0.18);
+
+    /* Layout */
+    --header-height: 64px;
+    --subheader-height: 56px;
+    --sidebar-width: 264px;
+    --sidebar-collapsed: 72px;
+    --drawer-width: 420px;
+
+    /* Sidebar */
+    --sidebar-background: var(--neutral-100);
+    --sidebar-foreground: var(--neutral-700);
+    --sidebar-primary: var(--brand-primary);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: var(--brand-primary-100);
+    --sidebar-accent-foreground: var(--brand-primary);
+    --sidebar-border: var(--neutral-200);
+    --sidebar-ring: var(--accent-info);
+  }
+
+  .dark {
+    --background: var(--neutral-900);
+    --foreground: var(--neutral-100);
+
+    --card: var(--neutral-850);
+    --card-foreground: var(--neutral-100);
+
+    --popover: var(--neutral-850);
+    --popover-foreground: var(--neutral-100);
+
+    --primary: 210 40% 98%;
+    --primary-foreground: var(--brand-primary);
+
+    --secondary: var(--neutral-800);
+    --secondary-foreground: var(--neutral-100);
+
+    --muted: var(--neutral-800);
+    --muted-foreground: var(--neutral-500);
+
+    --accent: var(--neutral-700);
+    --accent-foreground: var(--neutral-100);
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: var(--neutral-100);
+
+    --border: var(--neutral-700);
+    --input: var(--neutral-700);
+    --ring: var(--accent-info);
+
+    --sidebar-background: var(--neutral-850);
+    --sidebar-foreground: var(--neutral-200);
+    --sidebar-primary: var(--accent-info);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: var(--neutral-700);
+    --sidebar-accent-foreground: var(--neutral-100);
+    --sidebar-border: var(--neutral-700);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Pretendard', 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* Typography Scale */
+  .text-display {
+    @apply text-[1.75rem] leading-[2.75rem] font-bold;
+  }
+
+  .text-h1 {
+    @apply text-2xl leading-[2.375rem] font-bold;
+  }
+
+  .text-h2 {
+    @apply text-xl leading-8 font-semibold;
+  }
+
+  .text-h3 {
+    @apply text-lg leading-7 font-semibold;
+  }
+
+  .text-body {
+    @apply text-base leading-6;
+  }
+
+  .text-small {
+    @apply text-sm leading-[1.375rem];
+  }
+
+  .text-micro {
+    @apply text-xs leading-[1.125rem];
+  }
+
+  /* Focus Ring */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Tabular Numbers for Data */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Card Shadows */
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .shadow-modal {
+    box-shadow: var(--shadow-modal);
+  }
+
+  /* Status Badges */
+  .badge-waiting {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .badge-working {
+    @apply bg-info/10 text-info;
+  }
+
+  .badge-complete {
+    @apply bg-success/10 text-success;
+  }
+
+  .badge-lost {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .badge-won {
+    @apply bg-highlight/20 text-highlight-foreground;
+  }
+}
+
+@layer utilities {
+  /* Touch Target */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Tablet Row Height */
+  .tablet-row {
+    @apply min-h-[56px];
+  }
+
+  /* Page Padding */
+  .page-padding {
+    @apply p-4 md:p-6;
+  }
+
+  /* Section Gap */
+  .section-gap {
+    @apply gap-4;
+  }
+
+  /* Hide Scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
